@@ -1,25 +1,37 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add("login", (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add("drag", { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add("dismiss", { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+Cypress.Commands.add('citationRequest',(language,status,message,seconds)=>{
+    cy.setLanguageMode(language)
+    cy.intercept('POST', '/api', {
+      delayMs:1000*seconds,
+      statusCode: status
+    },
+    ).as('api')
+    cy.get('textarea[id="textEntryArea"]').type('משה קיבל תורה')
+    cy.contains(message).should('not.exist')
+    cy.get('[id="findInstancesBttn"]').click()
+    cy.wait('@api').then(xhr=>{
+      cy.wrap(xhr.response.statusCode).should('eq', status).then(()=>{
+        cy.contains(message).should('exist')
+      })
+    })
+  })  
+
+  Cypress.Commands.add('setLanguageMode',(language)=>{
+    cy.get('body').then(elem => {
+      let languageMode
+      if(language=='Hebrew'){
+        languageMode='he'
+      }else if(language=='English'){
+        languageMode=''
+      }
+      let classAttr = elem.attr("class").substring(0,2);
+      if(classAttr!=languageMode)
+      {
+        cy.get('a').contains(/^English$/||/^עברית$/).click();
+      }
+      if(languageMode=='he'){
+        cy.get('a').contains(/^English$/).should('exist')
+      } else{
+        cy.get('a').contains(/^עברית$/).should('exist')
+      }
+    })
+  })
