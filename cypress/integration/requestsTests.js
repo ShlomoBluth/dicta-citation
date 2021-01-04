@@ -12,8 +12,7 @@ describe('RequestsTests',()=>{
   
 
     it('Message after request failed with status code 500 when clicking the run butten of citation'+
-    ' page in hebrew mode'
-    ,()=>{
+    ' page in hebrew mode',()=>{
        cy.citationRequest({
            language:'Hebrew',
            status:500,
@@ -22,8 +21,7 @@ describe('RequestsTests',()=>{
     })
 
     it('Message after request failed with status code 500 when clicking the run butten of citation'+
-    ' page in english mode'
-    ,()=>{
+    ' page in english mode',()=>{
         cy.citationRequest({
             language:'English',
             status:500,
@@ -32,8 +30,7 @@ describe('RequestsTests',()=>{
     })
 
     it('Message after request failed with 30 seconds delay when clicking the run butten of citation'+
-    ' page in hebrew mode'
-    ,()=>{
+    ' page in hebrew mode',()=>{
         cy.citationRequest({
             language:'Hebrew',
             message:'לא ניתן לגשת כעת לשרת, נסה שוב מאוחר יותר',
@@ -42,8 +39,7 @@ describe('RequestsTests',()=>{
     })
 
     it('Message after request failed with 30 seconds delay when clicking the run butten of citation'+
-    ' page in english mode'
-    ,()=>{
+    ' page in english mode',()=>{
         cy.citationRequest({
             language:'English',
             message:'Server error. Please try again later',
@@ -52,8 +48,7 @@ describe('RequestsTests',()=>{
     })
 
     it('Successful request with 14 seconds delay of response when clicking the run butten of'+
-    ' citation page in hebrew mode'
-    ,()=>{
+    ' citation page in hebrew mode',()=>{
         cy.citationRequest({
             language:'Hebrew',
             delaySeconds: 14
@@ -61,8 +56,7 @@ describe('RequestsTests',()=>{
     })
 
     it('Successful request with 14 seconds delay of response when clicking the run butten of'+
-    ' citation page in english mode'
-    ,()=>{
+    ' citation page in english mode',()=>{
         cy.citationRequest({
             language:'English',
             delaySeconds: 14
