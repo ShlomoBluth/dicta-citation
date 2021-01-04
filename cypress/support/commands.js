@@ -1,17 +1,24 @@
-Cypress.Commands.add('citationRequest',(language,status,message,seconds)=>{
+Cypress.Commands.add('citationRequest',({language,status=200,message='',delaySeconds=0})=>{
     cy.setLanguageMode(language)
     cy.intercept('POST', '/api', {
-      delayMs:1000*seconds,
-      statusCode: status
+      delayMs:1000*delaySeconds,
+      statusCode: status,
+      body:'it worked!'
     },
     ).as('api')
     cy.get('textarea[id="textEntryArea"]').type('משה קיבל תורה')
-    cy.contains(message).should('not.exist')
+    if(message.length>0){
+      cy.contains(message).should('not.exist')
+    }
     cy.get('[id="findInstancesBttn"]').click()
-    cy.wait('@api').then(xhr=>{
-      cy.wrap(xhr.response.statusCode).should('eq', status).then(()=>{
-        cy.contains(message).should('exist')
-      })
+    cy.wait('@api',{responseTimeout:1000*delaySeconds}).then(xhr=>{
+      if(message.length>0){
+        cy.wrap(xhr.response.statusCode).should('eq', status).then(()=>{
+          cy.contains(message).should('exist')
+        })
+      }else{
+        cy.get('@api').its('response.body').should('eq','it worked!')
+      }
     })
   })  
 
