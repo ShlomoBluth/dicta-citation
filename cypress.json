@@ -1,3 +1,5 @@
 {
-    "projectId": "4oeknh"
+    "projectId": "4oeknh",
+    "screenshotOnRunFailure": false,
+    "defaultCommandTimeout": 30000
 }
