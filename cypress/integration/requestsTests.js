@@ -29,8 +29,8 @@ describe('RequestsTests',()=>{
         })
     })
 
-    it('Message after request failed with 30 seconds delay when clicking the run butten of citation'+
-    ' page in hebrew mode',()=>{
+    it('Error message for response with a delay of 15 seconds when clicking the run butten'+
+    ' of citation page in hebrew mode',()=>{
         cy.citationRequest({
             language:'Hebrew',
             message:'לא ניתן לגשת כעת לשרת, נסה שוב מאוחר יותר',
@@ -38,8 +38,8 @@ describe('RequestsTests',()=>{
         })
     })
 
-    it('Message after request failed with 30 seconds delay when clicking the run butten of citation'+
-    ' page in english mode',()=>{
+    it('Error message for response with a delay of 15 seconds when clicking the run butten'+
+    ' of citation page in english mode',()=>{
         cy.citationRequest({
             language:'English',
             message:'Server error. Please try again later',
@@ -47,19 +47,5 @@ describe('RequestsTests',()=>{
         })
     })
 
-    it('Successful request with 14 seconds delay of response when clicking the run butten of'+
-    ' citation page in hebrew mode',()=>{
-        cy.citationRequest({
-            language:'Hebrew',
-            delaySeconds: 14
-        })
-    })
-
-    it('Successful request with 14 seconds delay of response when clicking the run butten of'+
-    ' citation page in english mode',()=>{
-        cy.citationRequest({
-            language:'English',
-            delaySeconds: 14
-        })
-    })
+    
 })
