@@ -11,8 +11,8 @@ describe('RequestsTests',()=>{
     })
   
 
-    it('Message after request failed with status code 500 when clicking the run butten of citation'+
-    ' page in hebrew mode',()=>{
+    it('Error message for response with status code 500 when clicking the run button of citation page'+
+    ' in hebrew mode',()=>{
        cy.citationRequest({
            language:'Hebrew',
            status:500,
@@ -20,8 +20,8 @@ describe('RequestsTests',()=>{
        })
     })
 
-    it('Message after request failed with status code 500 when clicking the run butten of citation'+
-    ' page in english mode',()=>{
+    it('Error message for response with status code 500 when clicking the run button of citation page'+
+    ' in english mode',()=>{
         cy.citationRequest({
             language:'English',
             status:500,
@@ -29,7 +29,7 @@ describe('RequestsTests',()=>{
         })
     })
 
-    it('Error message for response with a delay of 15 seconds when clicking the run butten'+
+    it('Error message for response with a delay of 15 seconds when clicking the run button'+
     ' of citation page in hebrew mode',()=>{
         cy.citationRequest({
             language:'Hebrew',
@@ -38,7 +38,7 @@ describe('RequestsTests',()=>{
         })
     })
 
-    it('Error message for response with a delay of 15 seconds when clicking the run butten'+
+    it('Error message for response with a delay of 15 seconds when clicking the run button'+
     ' of citation page in english mode',()=>{
         cy.citationRequest({
             language:'English',
