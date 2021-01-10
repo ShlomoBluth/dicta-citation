@@ -9,14 +9,9 @@ Cypress.Commands.add('citationRequest',({language,status=200,message='',delaySec
     cy.contains(message).should('not.exist')
   }
   cy.get('[id="findInstancesBttn"]').click()
-  if(delaySeconds>0){
-    cy.get('[class*="spinner"').should('exist')
-  }
-  cy.wait('@api',{responseTimeout:1000*delaySeconds})
-  cy.get('@api').its('response.statusCode').should('eq',status)
-  cy.get('[class*="spinner"').should('not.exist')
+  
   if(message.length>0){
-    cy.contains(message).should('exist')
+    cy.contains(message,{timeout:1000*delaySeconds+30000}).should('exist')
   }
 })  
 
@@ -31,7 +26,7 @@ Cypress.Commands.add('setLanguageMode',(language)=>{
     let classAttr = elem.attr("class").substring(0,2);
     if(classAttr!=languageMode)
     {
-      cy.get('a').contains(/^English$/||/^עברית$/).click();
+      cy.get('a').contains(/^English$|^עברית$/g).click();
     }
     if(languageMode=='he'){
       cy.get('a').contains(/^English$/).should('exist')
