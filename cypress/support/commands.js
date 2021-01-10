@@ -3,8 +3,7 @@ Cypress.Commands.add('citationRequest',({language,status=200,message='',delaySec
   cy.intercept('POST', '/api', {
     delayMs:1000*delaySeconds,
     statusCode: status
-  },
-  ).as('api')
+  },).as('api')
   cy.get('textarea[id="textEntryArea"]').type('משה קיבל תורה')
   if(message.length>0){
     cy.contains(message).should('not.exist')
