@@ -9,9 +9,13 @@ Cypress.Commands.add('citationRequest',({language,status=200,message='',delaySec
     cy.contains(message).should('not.exist')
   }
   cy.get('[id="findInstancesBttn"]').click()
+
+  if(delaySeconds>0){
+    cy.get('[class*="spinner"]',{timeout:1000*delaySeconds}).should('not.exist')
+  }
   
   if(message.length>0){
-    cy.contains(message,{timeout:1000*delaySeconds+30000}).should('exist')
+    cy.contains(message).should('exist')
   }
 })  
 
