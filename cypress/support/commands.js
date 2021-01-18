@@ -1,6 +1,6 @@
-Cypress.Commands.add('citationRequest',({language,status=200,message='',delaySeconds=0})=>{
+Cypress.Commands.add('citationRequest',({url,language,status=200,message='',delaySeconds=0})=>{
   cy.setLanguageMode(language)
-  cy.intercept('POST', '/api', {
+  cy.intercept('POST', '**/api/'+url+'**', {
     delayMs:1000*delaySeconds,
     statusCode: status
   },).as('api')
