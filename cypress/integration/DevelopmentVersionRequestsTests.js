@@ -4,7 +4,7 @@
 
 ////run tests on requests from citation run some in hebrew mode and english mode
 
-describe('RequestsTests',()=>{
+describe('DevelopmentVersionRequestsTests',()=>{
     
     beforeEach(() => {
         cy.visit('https://citation-dev--gracious-gates-eda4d9.netlify.app/')
