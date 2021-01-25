@@ -1,14 +1,28 @@
+
+Cypress.Commands.add('findCitation',(text)=>{
+  cy.get('textarea[id="textEntryArea"]').type(text)
+  cy.get('[id="findInstancesBttn"]').click()
+})
+
+Cypress.Commands.add('resultsTests',(text)=>{
+  let citationResults=''
+  cy.get('div[class*="matched-text"]').within(()=>{
+    cy.get('b').parent().then($res=>{
+      expect($res.text()).to.eq(text)
+    })
+  })
+})
+
 Cypress.Commands.add('citationRequest',({url,language,status=200,message='',delaySeconds=0})=>{
   cy.setLanguageMode(language)
   cy.intercept('POST', '**/api/'+url+'**', {
     delayMs:1000*delaySeconds,
     statusCode: status
-  },).as('api')
-  cy.get('textarea[id="textEntryArea"]').type('משה קיבל תורה')
+  },)
   if(message.length>0){
     cy.contains(message).should('not.exist')
   }
-  cy.get('[id="findInstancesBttn"]').click()
+  cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
 
   if(delaySeconds>0){
     cy.get('[class*="spinner"]',{timeout:1000*delaySeconds}).should('not.exist')
