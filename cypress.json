@@ -2,8 +2,5 @@
     "projectId": "4oeknh",
     "screenshotOnRunFailure": false,
     "defaultCommandTimeout": 10000,
-    "retries": {
-        "runMode": 2,
-        "openMode": 0
-    }
+    "baseUrl":"https://citation-dev--gracious-gates-eda4d9.netlify.app/"
 }
