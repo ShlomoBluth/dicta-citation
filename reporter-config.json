@@ -1,10 +1,9 @@
 {
-    "projectId": "4oeknh",
-    "screenshotOnRunFailure": false,
-    "defaultCommandTimeout": 10000,
-    "baseUrl":"https://citation-dev--gracious-gates-eda4d9.netlify.app/",
-    "reporter": "cypress-multi-reporters",
-    "reporterOptions": {
-        "configFile": "reporter-config.json"
+    "reporterEnabled": "mochawesome",
+    "mochawesomeReporterOptions": {
+        "reportDir": "cypress/results/json",
+        "overwrite": false,
+        "html": false,
+        "json": true
     }
 }
