@@ -4,10 +4,8 @@
     "defaultCommandTimeout": 30000,
     "pageLoadTimeout":60000,
     "baseUrl":"https://citation-dev--gracious-gates-eda4d9.netlify.app/",
-    "mochawesomeReporterOptions": {
-        "reportDir": "cypress/results/json",
-        "overwrite": false,
-        "html": false,
-        "json": true
+    "reporter": "cypress-multi-reporters",
+    "reporterOptions": {
+        "configFile": "reporter-config.json"
     }
 }
