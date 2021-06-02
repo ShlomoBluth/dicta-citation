@@ -26,13 +26,13 @@ sizes.forEach((size) => {
             cy.visit('/')
         })
     
-        it('abbreviation run in hebrew mode',()=>{
+        it('citation run in hebrew mode',()=>{
             cy.setLanguageMode('Hebrew')
             cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
             cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
         })
     
-        it('abbreviation run in english mode',()=>{
+        it('citation run in english mode',()=>{
             cy.setLanguageMode('English')
             cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
             cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
