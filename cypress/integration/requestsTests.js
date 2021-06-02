@@ -55,7 +55,7 @@ sizes.forEach((size) => {
                 url:'markpsukim',
                 language:'Hebrew',
                 message:'לא ניתן לגשת כעת לשרת, נסה שוב מאוחר יותר',
-                delaySeconds: 15
+                delaySeconds: 60
             })
         })
     
@@ -65,7 +65,7 @@ sizes.forEach((size) => {
                 url:'markpsukim',
                 language:'English',
                 message:'Server error. Please try again later',
-                delaySeconds: 15
+                delaySeconds: 60
             })
         })
     
