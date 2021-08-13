@@ -1,7 +1,9 @@
 
 Cypress.Commands.add('findCitation',(text)=>{
   cy.get('textarea[id="textEntryArea"]').type(text)
+  cy.intercept('**/api/markpsukim**').as('req')
   cy.get('[id="findInstancesBttn"]').click()
+  cy.wait('@req')
 })
 
 Cypress.Commands.add('resultsTests',(text)=>{
