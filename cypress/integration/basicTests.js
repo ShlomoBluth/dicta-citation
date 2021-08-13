@@ -28,13 +28,17 @@ sizes.forEach((size) => {
     
         it('citation run in hebrew mode',()=>{
             cy.setLanguageMode('Hebrew')
+            cy.intercept('**/api/markpsukim**').as('req')
             cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
+            cy.wait('@req')
             cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
         })
     
         it('citation run in english mode',()=>{
             cy.setLanguageMode('English')
+            cy.intercept('**/api/markpsukim**').as('req')
             cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
+            cy.wait('@req')
             cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
         })
     })
