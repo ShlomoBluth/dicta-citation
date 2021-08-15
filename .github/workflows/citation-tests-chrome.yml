@@ -1,4 +1,4 @@
-name: Citation tests edge
+name: Citation tests chrome
 
 on: 
   #push
@@ -9,10 +9,11 @@ on:
 
 jobs:
   cypress-e2e:
-    name: Run on Edge
+    name: Run on Chrome 89
     runs-on: ubuntu-latest
     container: 
-      image: cypress/browsers:node14.10.1-edge88
+      image: cypress/browsers:node14.16.0-chrome89-ff86
+      options: --user 1001
 
     steps:
     - uses: actions/checkout@v1
@@ -27,15 +28,13 @@ jobs:
         $(npm bin)/cypress cache list
         $(npm bin)/cypress verify
 
-
-    - name: Run edge tests
-      run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
+    - name: Run chrome tests
+      run: npx cypress run --browser chrome --spec ./cypress/integration/basicTests.js
+      
+    - name: Run chrome requests tests
+      run: xvfb-run npx cypress run --browser chrome --spec ./cypress/integration/requestsTests.js
       if: ${{ always() }}
-  
-    - name: Run edge requests tests
-      run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js
-      if: ${{ always() }}
-
+      
     - name: Copy test execution videos 
       run: |
         mkdir public
