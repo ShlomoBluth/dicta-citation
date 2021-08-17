@@ -25,7 +25,7 @@ sizes.forEach((size) => {
                 })
                 cy.viewport(size)
             }
-            cy.visit('https://citation.dicta.org.il/')
+            cy.visitpage({url:'https://citation.dicta.org.il/'})
         })
       
     

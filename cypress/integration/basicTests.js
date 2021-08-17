@@ -23,7 +23,7 @@ sizes.forEach((size) => {
                 })
                 cy.viewport(size)
             }
-            cy.visit('/')
+            cy.visitpage({url:'/'})
         })
     
         it('citation run in hebrew mode',()=>{
