@@ -29,7 +29,7 @@ jobs:
 
 
     - name: Run edge tests 
-      run: (if [ "$BASIC_TESTS" == "true" ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi)
+      run: (if [ "${BASIC_TESTS}" == "true" ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi)
   
     - name: Run edge requests tests
       run: (if [ "$REQUESTS_TESTS" == "true" ]; 
@@ -39,7 +39,7 @@ jobs:
     - name: Copy test execution videos 
       run: |
         mkdir public
-        cp -r ./cypress/videos public/videos
+        cp -r cypress/videos public/videos
       if: ${{ always() }}
 
     - name: Merge test results into one
