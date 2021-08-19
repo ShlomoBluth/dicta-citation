@@ -15,6 +15,10 @@ jobs:
       image: cypress/browsers:node14.10.1-edge88
 
     steps:
+
+    - bash: 
+      echo $BASIC_TESTS
+
     - uses: actions/checkout@v1
       with: 
         submodules: true
@@ -26,7 +30,6 @@ jobs:
         $(npm bin)/cypress cache path
         $(npm bin)/cypress cache list
         $(npm bin)/cypress verify
-        $ echo $BASIC_TESTS
 
 
     - name: Run edge tests 
