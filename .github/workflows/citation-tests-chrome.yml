@@ -1,4 +1,4 @@
-name: Citation tests chrome
+name: Chrome tests
 
 on: 
   #push

@@ -1,4 +1,4 @@
-name: Citation tests firefox
+name: Firefox tests
 
 on: 
   #push
