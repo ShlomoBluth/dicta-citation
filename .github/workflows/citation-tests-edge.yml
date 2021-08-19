@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  echo $REQUESTS_TESTS
+      run:  echo $BASIC_TESTS
   
 
 
