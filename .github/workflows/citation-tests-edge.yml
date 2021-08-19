@@ -16,8 +16,7 @@ jobs:
 
     steps:
 
-    - bash:
-      run: |
+    - bash: |
         echo $BASIC_TESTS
 
     - uses: actions/checkout@v1
