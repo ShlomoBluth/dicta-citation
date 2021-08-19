@@ -41,7 +41,7 @@ jobs:
       if: ${{ always() }}
 
     - name: Merge test results into one
-      run: mochawesome-merge cypress/results/json/*.json > index.json
+      run:  mochawesome-merge cypress/results/json/*.json > index.json
       if: ${{ always() }}
 
     - name: Generate HTML report
