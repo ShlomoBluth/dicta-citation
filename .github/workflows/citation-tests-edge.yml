@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  echo hello world
+      run:  echo $REQUESTS_TESTS
   
 
 
@@ -49,11 +49,11 @@ jobs:
       if: ${{ always() }}
 
     - name: Merge test results into one
-      run: npm run mochawesome-merge cypress/results/json/*.json > index.json
+      run: run mochawesome-merge cypress/results/json/*.json > index.json
       if: ${{ always() }}
 
     - name: Generate HTML report
-      run: npm run marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
+      run: run marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
       if: ${{ always() }}
 
     - name: Deploy report page
