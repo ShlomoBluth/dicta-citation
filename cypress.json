@@ -1,11 +1,12 @@
 {
-    "reporterEnabled": "mochawesome",
-    "screenshotOnRunFailure": false,
     "defaultCommandTimeout": 30000,
     "pageLoadTimeout":120000,
     "baseUrl":"https://citation-dev--gracious-gates-eda4d9.netlify.app/",
     "reporter": "cypress-multi-reporters",
     "reporterOptions": {
         "configFile": "reporter-config.json"
+    },
+    "env":{
+        "PROJECT_NAME": "Citation test"
     }
 }

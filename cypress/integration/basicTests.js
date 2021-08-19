@@ -10,6 +10,7 @@ sizes.forEach((size) => {
     describe('basicTests',()=>{
 
         beforeEach(() => {
+            cy.log(Cypress.env('PROJECT_NAME')).pause()
             cy.screenSize({size:size})
             cy.visitpage({url:'/'})
         })
