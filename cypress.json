@@ -7,6 +7,8 @@
         "configFile": "reporter-config.json"
     },
     "env":{
-        "PROJECT_NAME": "Citation test"
+        "PROJECT_NAME": "Citation test",
+        "BASIC_TESTS":true,
+        "REQUESTS_TESTS":false
     }
 }
