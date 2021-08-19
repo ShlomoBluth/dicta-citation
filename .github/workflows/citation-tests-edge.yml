@@ -1,4 +1,4 @@
-name: "{{env_var(PROJECT_NAME)}}"
+name: ${{env_var(PROJECT_NAME)}}
 
 on: 
   push
