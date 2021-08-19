@@ -1,4 +1,4 @@
-name: $PROJECT_NAME
+name: "{{ env_var(PROJECT_NAME }}" edge
 
 on: 
   push
