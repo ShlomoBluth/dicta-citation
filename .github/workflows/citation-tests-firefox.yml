@@ -29,7 +29,7 @@ jobs:
         $(npm bin)/cypress verify
 
     - name: Run firefox tests 
-      run: (if [ "$BASIC_TESTS" == "true" ]; xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/basicTests.js; fi)
+      run: (if [ "$BASIC_TESTS" == "true" ]; then xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/basicTests.js; fi)
   
     - name: Run firefox requests tests
       run: (if [ "$REQUESTS_TESTS" == "true" ]; then xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/requestsTests.js; fi)
