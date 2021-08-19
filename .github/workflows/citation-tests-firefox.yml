@@ -1,10 +1,10 @@
 name: Firefox tests
 
 on: 
-  #push
-  schedule:
+  push
+  #schedule:
     # * is a special character in YAML so you have to quote this string
-    - cron:  '0 6,14,22 * * *'
+    #- cron:  '0 6,14,22 * * *'
 
 
 jobs:
@@ -28,12 +28,11 @@ jobs:
         $(npm bin)/cypress cache list
         $(npm bin)/cypress verify
 
-    - name: Run firefox tests
-      run: xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/basicTests.js
+    - name: Run firefox tests 
+      run: (if [ "$BASIC_TESTS" == "true" ]; xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/basicTests.js; fi)
   
     - name: Run firefox requests tests
-      run: xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/requestsTests.js
-      if: ${{ always() }}
+      run: (if [ "$REQUESTS_TESTS" == "true" ]; then xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/requestsTests.js; fi)
 
     - name: Copy test execution videos 
       run: |
@@ -42,11 +41,11 @@ jobs:
       if: ${{ always() }}
 
     - name: Merge test results into one
-      run: npm run report:merge
+      run: mochawesome-merge cypress/results/json/*.json > index.json
       if: ${{ always() }}
 
     - name: Generate HTML report
-      run: npm run report:generate
+      run: marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
       if: ${{ always() }}
 
     - name: Deploy report page
@@ -55,4 +54,3 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
       if: ${{ always() }}
-                
