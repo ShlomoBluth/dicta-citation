@@ -29,7 +29,7 @@ jobs:
 
 
     - name: Run edge tests 
-      run: (if [ $BASIC_TESTS == true ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi)
+      run: if "$BASIC_TESTS" = "true" ; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi
   
     - name: Run edge requests tests
       run: (if [ "$REQUESTS_TESTS" == "true" ]; 
