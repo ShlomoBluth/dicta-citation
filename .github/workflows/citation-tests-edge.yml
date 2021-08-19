@@ -1,4 +1,4 @@
-name: ${PROJECT_NAME} edge
+name: $PROJECT_NAME edge
 
 on: 
   push
