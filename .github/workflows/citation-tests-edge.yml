@@ -28,7 +28,7 @@ jobs:
         $(npm bin)/cypress verify
 
 
-    - name: Run edge tests
+    - name: ${PROJECT_NAME}
       run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
   
     - name: Run edge requests tests
