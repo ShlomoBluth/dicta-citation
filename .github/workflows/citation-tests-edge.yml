@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  echo $BASIC_TESTS
+      run:  echo $LANG
   
 
 
@@ -53,7 +53,7 @@ jobs:
       if: ${{ always() }}
 
     - name: Generate HTML report
-      run: run marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
+      run: xvfb-run marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
       if: ${{ always() }}
 
     - name: Deploy report page
