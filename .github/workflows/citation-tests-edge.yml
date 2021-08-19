@@ -1,4 +1,4 @@
-name: {{ env_var(PROJECT_NAME }} edge
+name: {{ env_var(PROJECT_NAME)}} edge
 
 on: 
   push
