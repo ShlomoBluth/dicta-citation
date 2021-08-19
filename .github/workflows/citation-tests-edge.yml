@@ -32,8 +32,7 @@ jobs:
       run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
   
     - name: Run edge requests tests
-      run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js
-      if: $REQUESTS_TESTS == true
+      run: if [ "$REQUESTS_TESTS" == "true" ] xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js
 
     - name: Copy test execution videos 
       run: |
