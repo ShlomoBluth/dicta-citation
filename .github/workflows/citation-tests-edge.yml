@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  cat $BASIC_TESTS
+      run:  echo hello world
   
 
 
