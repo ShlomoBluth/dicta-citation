@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  echo $HOME
+      run:  echo env.REQUESTS_TESTS
   
 
 
