@@ -3,14 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "cy:run": "npm run runChrome & npm run runFirefox",
-    "cy:runSpec": "npm run runChrome -- --spec %npm_config_spec% & npm run runFirefox -- --spec %npm_config_spec%",
-    "runChrome": "cypress run --browser chrome  --record --key 03d210d2-c435-46eb-952f-4e6e24286dc0",
-    "runFirefox": "cypress run --browser firefox  --record --key 03d210d2-c435-46eb-952f-4e6e24286dc0",
-    "report:merge": "mochawesome-merge cypress/results/json/*.json > index.json",
-    "report:generate": "marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ShlomoBluth/dicta-citation.git"

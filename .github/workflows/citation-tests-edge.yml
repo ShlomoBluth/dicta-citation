@@ -29,7 +29,7 @@ jobs:
 
 
     - name: Run edge tests 
-      run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
+      run: (if [ "$BASIC_TESTS" == "true" ]; xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi)
   
     - name: Run edge requests tests
       run: (if [ "$REQUESTS_TESTS" == "true" ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js; fi)
@@ -41,11 +41,11 @@ jobs:
       if: ${{ always() }}
 
     - name: Merge test results into one
-      run: npm run report:merge
+      run: mochawesome-merge cypress/results/json/*.json > index.json
       if: ${{ always() }}
 
     - name: Generate HTML report
-      run: npm run report:generate
+      run: marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
       if: ${{ always() }}
 
     - name: Deploy report page
