@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  jq . cypress.json 
+      run: sudo apt install jq ; jq . cypress.json 
   
 
 
