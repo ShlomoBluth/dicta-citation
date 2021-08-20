@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run: cat cypress.json 
+      run: cat cypress.json | grep env
   
 
 
