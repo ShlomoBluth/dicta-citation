@@ -30,7 +30,8 @@ jobs:
 
     
     - name: Run edge tests 
-      run: cat cypress.json | grep BASIC_TESTS
+      run: apt install jq
+        #cat cypress.json | grep BASIC_TESTS
   
 
 
