@@ -29,11 +29,8 @@ jobs:
         $(npm bin)/cypress verify
 
     
-    - name: Run edge tests
-      env:
-        BASIC_TESTS: ${{secrets.BASIC_TESTS}}
-      run:  echo $BASIC_TESTS
-      if: "$BASIC_TESTS" == "falde"
+    - name: Run edge tests 
+      run:  printenv 
   
 
 
