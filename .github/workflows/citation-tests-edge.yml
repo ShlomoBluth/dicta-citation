@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  echo cypress.json 
+      run:  jq . cypress.json 
   
 
 
