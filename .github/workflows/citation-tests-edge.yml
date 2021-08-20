@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  printenv REQUESTS_TESTS
+      run:  printenv
   
 
 
