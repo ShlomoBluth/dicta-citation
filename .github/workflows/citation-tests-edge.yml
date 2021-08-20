@@ -28,6 +28,10 @@ jobs:
         $(npm bin)/cypress cache list
         $(npm bin)/cypress verify
 
+    variables:
+      - name: projectName
+        value: contoso
+
     
     - name: Run edge tests 
       run: grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://' 
@@ -35,7 +39,7 @@ jobs:
   
     
     - name: Run edge tests 
-      run: printenv
+      run: echo $(projectName)
 
     - name: Run edge tests 
       run:  xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
