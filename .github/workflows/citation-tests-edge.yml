@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  printenv
+      run:  printenv $GITHUB_REPOSITORY.cypress
   
 
 
