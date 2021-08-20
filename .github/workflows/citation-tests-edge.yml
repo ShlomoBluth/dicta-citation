@@ -31,7 +31,7 @@ jobs:
     
     - name: Run edge tests
       env:
-        BASIC_TESTS: ${{BASIC_TESTS}}
+        BASIC_TESTS: ${{secets.BASIC_TESTS}}
       run:  echo $BASIC_TESTS
   
 
