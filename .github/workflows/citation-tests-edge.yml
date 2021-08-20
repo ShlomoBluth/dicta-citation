@@ -9,9 +9,9 @@ on:
 
 jobs:
   variables:
-      - name: projectName
-        value: contoso
-        
+    - name: projectName
+      value: contoso
+
   cypress-e2e:
     name: Run on Edge
     runs-on: ubuntu-latest
