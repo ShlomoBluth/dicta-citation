@@ -43,7 +43,7 @@ jobs:
 
     - name: Run edge tests 
       run:  xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
-      if: grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://' == "hello"
+      #if: grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://' == "hello"
   
     - name: Run edge requests tests
       run: (if [ "$REQUESTS_TESTS" == "true" ]; 
