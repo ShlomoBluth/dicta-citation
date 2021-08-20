@@ -7,7 +7,7 @@
         "configFile": "reporter-config.json"
     },
     "env":{
-        "BASIC_TESTS":"hello",
+        "BASIC_TESTS":false,
         "REQUESTS_TESTS":true,
         "RECORD_KEY":"03d210d2-c435-46eb-952f-4e6e24286dc0"
     }
