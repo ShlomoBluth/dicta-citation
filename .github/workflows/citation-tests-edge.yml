@@ -30,10 +30,12 @@ jobs:
 
     
     - name: Run edge tests 
-      run: BASIC_TESTS=$(grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://') ; printenv $BASIC_TESTS
+      run: BASIC_TESTS=$(grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://') 
       # | grep -o '[^"]*$'
   
-
+    
+    - name: Run edge tests 
+      run: printenv
 
     - name: Run edge tests 
       run:  xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
