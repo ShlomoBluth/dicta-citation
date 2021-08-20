@@ -29,8 +29,10 @@ jobs:
         $(npm bin)/cypress verify
 
     
-    - name: Run edge tests 
-      run:  printenv 
+    - name: Run edge tests
+      env:
+        BASIC_TESTS: ${{secrets.BASIC_TESTS}}
+      run:  ecuo $BASIC_TESTS
   
 
 
