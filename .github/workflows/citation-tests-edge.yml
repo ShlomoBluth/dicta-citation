@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run: grep BASIC_TESTS cypress.json
+      run: grep BASIC_TESTS cypress.json | sed 'BASIC_TESTS/"/://'
       # | grep -o '[^"]*$'
   
 
