@@ -8,15 +8,16 @@ on:
 
 
 jobs:
+  variables:
+      - name: projectName
+        value: contoso
+        
   cypress-e2e:
     name: Run on Edge
     runs-on: ubuntu-latest
     container: 
       image: cypress/browsers:node14.10.1-edge88
 
-    variables:
-      - name: projectName
-        value: contoso
 
     steps:
 
