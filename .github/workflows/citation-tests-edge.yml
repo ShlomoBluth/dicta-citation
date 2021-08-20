@@ -37,10 +37,10 @@ jobs:
       # | grep -o '[^"]*$'
   
     
-    - name: Run edge tests 
+    - name: Print var 
       run: |
-        echo "${{env.BASIC_TESTS}}"
-        echo "${{env.REQUESTS_TESTS}}"
+        echo ${{env.BASIC_TESTS}}
+        echo ${{env.REQUESTS_TESTS}}
 
     - name: Run edge tests 
       run:  xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
