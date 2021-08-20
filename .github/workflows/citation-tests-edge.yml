@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run: cat cypress.json | grep -o 'BASIC_TESTS "[^"]*'
+      run: grep -o 'BASIC_TESTS "[^"]*' cypress.json
       # | grep -o '[^"]*$'
   
 
