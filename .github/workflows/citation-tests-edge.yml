@@ -8,10 +8,6 @@ on:
 
 
 jobs:
-  variables:
-    - name: projectName
-      value: contoso
-
   cypress-e2e:
     name: Run on Edge
     runs-on: ubuntu-latest
@@ -40,7 +36,7 @@ jobs:
   
     
     - name: Run edge tests 
-      run: echo $(projectName)
+      run: printenv
 
     - name: Run edge tests 
       run:  xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js
