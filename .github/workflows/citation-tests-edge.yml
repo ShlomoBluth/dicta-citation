@@ -30,7 +30,7 @@ jobs:
 
     
     - name: Run edge tests 
-      run:  ls $GITHUB_PATH 
+      run:  ls 
   
 
 
