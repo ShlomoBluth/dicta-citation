@@ -4,7 +4,7 @@
     "baseUrl":"https://citation-dev--gracious-gates-eda4d9.netlify.app/",
     "reporter": "cypress-multi-reporters",
     "reporterOptions": {
-        "configFile": "reporter-config.json"
+        "configFile": "dicta-shared/reporter-config.json"
     },
     "env":{
         "BASIC_TESTS":false,
