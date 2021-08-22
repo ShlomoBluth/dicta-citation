@@ -7,3 +7,6 @@
 [submodule ".github/workflows1"]
 	path = .github/workflows1
 	url = https://github.com/ShlomoBluth/workflows.git
+[submodule ".github/workflows"]
+	path = .github/workflows
+	url = https://github.com/ShlomoBluth/workflows.git
