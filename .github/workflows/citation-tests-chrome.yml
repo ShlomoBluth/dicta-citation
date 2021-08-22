@@ -1,7 +1,7 @@
-name: Firefox tests
+name: Chrome tests
 
-on: non
-  #push
+on:
+  push
   #schedule:
     # * is a special character in YAML so you have to quote this string
     #- cron:  '0 6,14,22 * * *'
@@ -9,7 +9,7 @@ on: non
 
 jobs:
   cypress-e2e:
-    name: Run on firefox
+    name: Run on Chrome 89
     runs-on: ubuntu-latest
     container: 
       image: cypress/browsers:node14.16.0-chrome89-ff86
@@ -28,11 +28,19 @@ jobs:
         $(npm bin)/cypress cache list
         $(npm bin)/cypress verify
 
-    - name: Run firefox tests 
-      run: (if [ "$BASIC_TESTS" == "true" ]; then xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/basicTests.js; fi)
+    - name: Set var 
+      run: |
+        echo "BASIC_TESTS=$(grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://')" | tr -d ' ' >> $GITHUB_ENV
+        echo "REQUESTS_TESTS=$(grep REQUESTS_TESTS cypress.json | sed 's/REQUESTS_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://')" | tr -d ' ' >> $GITHUB_ENV 
   
-    - name: Run firefox requests tests
-      run: (if [ "$REQUESTS_TESTS" == "true" ]; then xvfb-run npx cypress run --browser firefox --spec ./cypress/integration/requestsTests.js; fi)
+
+    - name: Run chrome tests 
+      run: xvfb-run npx cypress run --browser chrome --spec ./cypress/integration/basicTests.js
+      if: ${{env.BASIC_TESTS == 'true'}} 
+
+    - name: Run chtome requests tests
+      run: xvfb-run npx cypress run --browser chrome --spec ./cypress/integration/requestsTests.js
+      if: ${{env.REQUESTS_TESTS == 'true'}}
 
     - name: Copy test execution videos 
       run: |
@@ -41,11 +49,11 @@ jobs:
       if: ${{ always() }}
 
     - name: Merge test results into one
-      run:  mochawesome-merge cypress/results/json/*.json > index.json
+      run: npx mochawesome-merge cypress/results/json/*.json > index.json
       if: ${{ always() }}
 
     - name: Generate HTML report
-      run: marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
+      run: npx marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
       if: ${{ always() }}
 
     - name: Deploy report page
@@ -54,3 +62,4 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./public
       if: ${{ always() }}
+                
