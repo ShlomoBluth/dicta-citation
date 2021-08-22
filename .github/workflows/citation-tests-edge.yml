@@ -43,12 +43,12 @@ jobs:
         echo ${{env.REQUESTS_TESTS}}
 
     - name: Run edge tests 
-      run: (if [ "${{env.BASIC_TESTS}}" == "true" ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi)
+      run: (if [ ${{env.BASIC_TESTS}} == true ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/basicTests.js; fi)
       #if: "'${{env.BASIC_TESTS}}' != 'true'"
 
     - name: Run edge requests tests
-      run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js
-      if: eq('${{env.REQUESTS_TESTS}}','true')
+      run: (if [ "${{env.BASIC_TESTS}}" == "true" ]; then xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js; fi)
+      
 
     - name: Copy test execution videos 
       run: |
