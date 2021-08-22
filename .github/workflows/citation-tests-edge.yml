@@ -32,7 +32,7 @@ jobs:
     
     - name: Set var 
       run: |
-        echo "BASIC_TESTS=$(grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://')" >> $GITHUB_ENV
+        echo "BASIC_TESTS=$(grep BASIC_TESTS cypress.json | sed 's/BASIC_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://')" | tr -d ' ' >> $GITHUB_ENV
         echo "REQUESTS_TESTS=$(grep REQUESTS_TESTS cypress.json | sed 's/REQUESTS_TESTS//' | sed 's/"//g' |sed 's/,//' | sed 's/://')" | tr -d ' ' >> $GITHUB_ENV 
       # | grep -o '[^"]*$'
   
@@ -48,7 +48,7 @@ jobs:
 
     - name: Run edge requests tests
       run: xvfb-run npx cypress run --browser edge --spec ./cypress/integration/requestsTests.js
-      if: ${{env.REQUESTS_TESTS == '        true'}}
+      if: ${{env.REQUESTS_TESTS == 'true'}}
 
     - name: Copy test execution videos 
       run: |
@@ -57,11 +57,11 @@ jobs:
       if: ${{ always() }}
 
     - name: Merge test results into one
-      run: run mochawesome-merge cypress/results/json/*.json > index.json
+      run: npx mochawesome-merge cypress/results/json/*.json > index.json
       if: ${{ always() }}
 
     - name: Generate HTML report
-      run: npm marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
+      run: npx marge index.json --reportDir public --assetsDir public/assets --reportPageTitle index.html
       if: ${{ always() }}
 
     - name: Deploy report page
