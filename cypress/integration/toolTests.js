@@ -2,32 +2,43 @@
 
 //run basic tests on citation run
 
-let sizes = ['iphone-x',[1000, 660]]
+const urls = new Map();
+urls.set('live',Cypress.env('LIVE_URL'))
+urls.set('dev',Cypress.env('DEV_URL')) 
+
+const sizes= new Map();
+sizes.set('desktop',[1000, 660])
+sizes.set('mobile','iphone-x')
 
 
-sizes.forEach((size) => {
+urls.forEach((urlValue,urlKey)=>{
 
-    describe('toolTests',()=>{
+    sizes.forEach((sizeValue,sizeKey) => {
 
-        beforeEach(() => {
-            cy.screenSize({size:size})
-            cy.visitpage({url:'https://citation.dicta.org.il/'})
-        })
     
-        it('citation run in hebrew mode',()=>{
-            cy.setLanguageMode('Hebrew')
-            cy.intercept('**/api/markpsukim**').as('req')
-            cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
-            cy.wait('@req')
-            cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
-        })
+        describe('toolTests '+urlKey+' '+sizeKey,()=>{
     
-        it('citation run in english mode',()=>{
-            cy.setLanguageMode('English')
-            cy.intercept('**/api/markpsukim**').as('req')
-            cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
-            cy.wait('@req')
-            cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
+            beforeEach(() => {
+                cy.screenSize({size:sizeValue})
+                cy.visitpage({url:urlValue})
+            })
+
+            it('citation run in hebrew mode',()=>{
+                cy.setLanguageMode('Hebrew')
+                cy.intercept('**/api/markpsukim**').as('req')
+                cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
+                cy.wait('@req')
+                cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
+            })
+        
+            it('citation run in english mode',()=>{
+                cy.setLanguageMode('English')
+                cy.intercept('**/api/markpsukim**').as('req')
+                cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
+                cy.wait('@req')
+                cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
+            })
+
         })
     })
 
