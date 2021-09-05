@@ -14,7 +14,7 @@ Cypress.Commands.add('resultsTests',(text)=>{
 })
 
 Cypress.Commands.add('citationRequest',({url,language,status=200,message='',delaySeconds=0})=>{
-  cy.setLanguageMode(language)
+  cy.setLanguageMode({language:language})
   cy.intercept('POST', '**/api/'+url+'**', {
     delayMs:1000*delaySeconds,
     statusCode: status
@@ -33,23 +33,23 @@ Cypress.Commands.add('citationRequest',({url,language,status=200,message='',dela
   }
 })  
 
-Cypress.Commands.add('setLanguageMode',(language)=>{
-  cy.get('body').then(elem => {
-    let languageMode
-    if(language=='Hebrew'){
-      languageMode='he'
-    }else if(language=='English'){
-      languageMode=''
-    }
-    let classAttr = elem.attr("class").substring(0,2);
-    if(classAttr!=languageMode)
-    {
-      cy.get('a').contains(/^English$|^עברית$/g).click({force: true});
-    }
-    if(languageMode=='he'){
-      cy.get('a').contains(/^English$/).should('exist')
-    } else{
-      cy.get('a').contains(/^עברית$/).should('exist')
-    }
-  })
-})  
+// Cypress.Commands.add('setLanguageMode',(language)=>{
+//   cy.get('body').then(elem => {
+//     let languageMode
+//     if(language=='Hebrew'){
+//       languageMode='he'
+//     }else if(language=='English'){
+//       languageMode=''
+//     }
+//     let classAttr = elem.attr("class").substring(0,2);
+//     if(classAttr!=languageMode)
+//     {
+//       cy.get('a').contains(/^English$|^עברית$/g).click({force: true});
+//     }
+//     if(languageMode=='he'){
+//       cy.get('a').contains(/^English$/).should('exist')
+//     } else{
+//       cy.get('a').contains(/^עברית$/).should('exist')
+//     }
+//   })
+// })  

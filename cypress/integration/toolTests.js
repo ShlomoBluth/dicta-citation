@@ -11,7 +11,7 @@ sizes.forEach((size) => {
 
         beforeEach(() => {
             cy.screenSize({size:size})
-            cy.visitpage({url:'/'})
+            cy.visitpage({url:'https://citation.dicta.org.il/'})
         })
     
         it('citation run in hebrew mode',()=>{
