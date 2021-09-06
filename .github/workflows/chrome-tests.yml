@@ -41,7 +41,7 @@ jobs:
     - name: Copy test execution videos 
       run: |
         mkdir public
-        cp cypress/videos/toolTests.mp4 public/videos/toolTests.mp4
+        cp cypress/videos/toolTests.js.mp4 public/videos/toolTests.mp4
       if: ${{ always() && (env.TOOL_TESTS == 'true')}}
 
     - name: Run chtome requests tests
