@@ -50,7 +50,6 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        mkdir public
         cp -r cypress/videos/requestsTests.js.mp4 public/videos
       if: ${{ always() && (env.REQUESTS_TESTS == 'true') }}
 
