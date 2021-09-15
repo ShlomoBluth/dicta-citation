@@ -27,7 +27,7 @@ urls.forEach((urlValue,urlKey)=>{
                 cy.setLanguageMode('Hebrew')
                 cy.intercept('**/api/markpsukim**').as('req')
                 cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
-                cy.wait('@req')
+                cy.wait('@req',{timeout:120000})
                 cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
             })
         
@@ -35,7 +35,7 @@ urls.forEach((urlValue,urlKey)=>{
                 cy.setLanguageMode('English')
                 cy.intercept('**/api/markpsukim**').as('req')
                 cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
-                cy.wait('@req')
+                cy.wait('@req',{timeout:120000})
                 cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
             })
 
