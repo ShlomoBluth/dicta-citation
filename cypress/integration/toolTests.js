@@ -24,7 +24,7 @@ urls.forEach((urlValue,urlKey)=>{
             })
 
             it('citation run in hebrew mode',()=>{
-                cy.setLanguageMode('Hebrew')
+                cy.setLanguageMode({language:'Hebrew'})
                 cy.intercept('**/api/markpsukim**').as('req')
                 cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
                 cy.wait('@req',{timeout:120000})
@@ -32,11 +32,21 @@ urls.forEach((urlValue,urlKey)=>{
             })
         
             it('citation run in english mode',()=>{
-                cy.setLanguageMode('English')
+                cy.setLanguageMode({language:'English'})
                 cy.intercept('**/api/markpsukim**').as('req')
                 cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
                 cy.wait('@req',{timeout:120000})
                 cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
+            })
+
+            it('graph in hebrew mode',()=>{
+                cy.setLanguageMode({language:'Hebrew'})
+                cy.intercept('**/api/markpsukim**').as('req')
+                cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
+                cy.wait('@req',{timeout:120000})
+                cy.get('[class="col-auto"]').contains('הערות שוליים').siblings().click({force:true})
+                cy.get('[role="presentation"]').contains('גרף').click({force:true})
+                cy.get('[id="frame"]').should('exist')
             })
 
         })
