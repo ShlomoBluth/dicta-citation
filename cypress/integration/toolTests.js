@@ -46,7 +46,7 @@ urls.forEach((urlValue,urlKey)=>{
                 cy.wait('@req',{timeout:120000})
                 cy.get('[class="col-auto"]').contains('הערות שוליים').siblings().click({force:true})
                 cy.get('[role="presentation"]').contains('גרף').click({force:true})
-                cy.get('[id="frame"]').should('exist')
+                cy.get('[id="frame"]',{timeout:300000}).should('exist')
             })
 
         })
