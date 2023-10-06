@@ -1,14 +1,11 @@
 {
   "devDependencies": {
     "cypress": "^13.3.0",
-<<<<<<< HEAD
     "cypress-multi-reporters": "^1.6.3",
-    "mochawesome": "^7.1.3"
-=======
+    "mochawesome": "^7.1.3",
     "cypress-multi-reporters": "^1.5.0",
     "mocha": "^8.3.2",
     "mochawesome": "^6.2.2",
     "mochawesome-merge": "^4.2.0"
->>>>>>> 9a67788f7b73cc7cd5180263655a3febdf299efe
   }
 }
