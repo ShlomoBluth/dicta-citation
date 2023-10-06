@@ -1,24 +1,7 @@
 {
-  "name": "dicta-citation",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ShlomoBluth/dicta-citation.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ShlomoBluth/dicta-citation/issues"
-  },
-  "homepage": "https://github.com/ShlomoBluth/dicta-citation#readme",
   "devDependencies": {
-    "cypress": "^8.5.0",
-    "cypress-multi-reporters": "^1.5.0",
-    "mocha": "^8.3.2",
-    "mochawesome": "^6.2.2",
-    "mochawesome-merge": "^4.2.0"
+    "cypress": "^13.3.0",
+    "cypress-multi-reporters": "^1.6.3",
+    "mochawesome": "^7.1.3"
   }
 }
