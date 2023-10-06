@@ -1,6 +1,10 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
+<<<<<<< HEAD
+=======
+  video: true,
+>>>>>>> 9a67788f7b73cc7cd5180263655a3febdf299efe
   defaultCommandTimeout: 30000,
   pageLoadTimeout: 120000,
   reporter: 'cypress-multi-reporters',
@@ -21,6 +25,9 @@ module.exports = defineConfig({
       return require('./cypress/plugins/index.js')(on, config)
     },
     baseUrl: 'https://citation-dev--gracious-gates-eda4d9.netlify.app/',
+<<<<<<< HEAD
     specPattern: 'cypress/e2e/**/*.{js,jsx,ts,tsx}',
+=======
+>>>>>>> 9a67788f7b73cc7cd5180263655a3febdf299efe
   },
 })
