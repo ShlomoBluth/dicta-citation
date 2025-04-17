@@ -12,7 +12,7 @@ jobs:
     name: Run on firefox
     runs-on: ubuntu-latest
     container: 
-      image: cypress/browsers:node18.16.1-chrome120-ff120
+      image: cypress/browsers:node-22.14.0-chrome-135.0.7049.84-1-ff-137.0.1-edge-135.0.3179.54-1
       options: --user 1001
 
     steps:
