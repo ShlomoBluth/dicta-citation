@@ -11,8 +11,8 @@ jobs:
   cypress-e2e:
     name: Run on Edge
     runs-on: ubuntu-latest
-    container: 
-      image: cypress/browsers:node14.10.1-edge88
+    # container: 
+    #   image: cypress/browsers:node14.10.1-edge88
 
 
     steps:
