@@ -51,7 +51,7 @@ jobs:
         touch toolTest.log
         toolTestsCommand='npx cypress run --browser firefox --spec ./cypress/e2e/toolTests.js \
         --config trashAssetsBeforeRuns=false'
-        if $toolTestsCommand >> toolTest.log
+        if eval $toolTestsCommand >> toolTest.log
         then
           cat toolTest.log
         else
@@ -76,7 +76,7 @@ jobs:
         touch requestsTest.log
         requestsTestsCommand='npx cypress run --browser firefox --spec ./cypress/e2e/requestsTests.js \
         --config trashAssetsBeforeRuns=false'
-        if $requestsTestsCommand >> requestsTest.log
+        if eval $requestsTestsCommand >> requestsTest.log
         then
           cat requestsTest.log
         else
