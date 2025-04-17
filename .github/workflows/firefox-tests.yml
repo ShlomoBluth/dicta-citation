@@ -11,9 +11,9 @@ jobs:
   cypress-e2e:
     name: Run on firefox
     runs-on: ubuntu-latest
-    # container: 
-    #   image: cypress/browsers:node14.16.0-chrome89-ff86
-    #   options: --user 1001
+    container: 
+      image: cypress/browsers:node14.16.0-chrome89-ff86
+      options: --user 1001
 
     steps:
     - uses: actions/checkout@v4
@@ -21,10 +21,10 @@ jobs:
         submodules: true
 
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '14.18.0'
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: '14.18.0'
 
 
     - name: Install a project with a clean slate
@@ -47,7 +47,7 @@ jobs:
     - name: Run firefox tool tests
       run: |
         touch toolTest.log
-        toolTestsCommand='xvfb-run -a npx cypress run --browser firefox --headed --spec ./cypress/e2e/toolTests.js \
+        toolTestsCommand='npx cypress run --browser firefox --spec ./cypress/e2e/toolTests.js \
         --config trashAssetsBeforeRuns=false'
         if $toolTestsCommand >> toolTest.log
         then
@@ -72,7 +72,7 @@ jobs:
     - name: Run firefox requests tests
       run: |
         touch requestsTest.log
-        requestsTestsCommand='xvfb-run -a npx cypress --headed run --browser firefox --spec ./cypress/e2e/requestsTests.js \
+        requestsTestsCommand='npx cypress run --browser firefox --spec ./cypress/e2e/requestsTests.js \
         --config trashAssetsBeforeRuns=false'
         if $requestsTestsCommand >> requestsTest.log
         then
