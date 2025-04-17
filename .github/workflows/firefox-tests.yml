@@ -27,7 +27,7 @@ jobs:
     #     node-version: '14.18.0'
 
 
-    - name: Install a project with a clean slate
+    - name: Install Cypress and reporters
       run: |
         npm install --save-dev cypress
         npm install cypress-multi-reporters --save-dev
@@ -35,8 +35,10 @@ jobs:
         $(npm bin)/cypress cache path
         $(npm bin)/cypress cache list
         $(npm bin)/cypress verify
-        mkdir public
-        mkdir public/videos
+        mkdir -p public/videos
+
+    - name: Attempt to fix vulnerabilities (optional)
+      run: npm audit fix || true
 
     - name: Set var 
       run: |
