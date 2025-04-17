@@ -26,6 +26,9 @@ jobs:
     #   with:
     #     node-version: '14.18.0'
 
+    - name: Attempt to fix vulnerabilities (optional)
+      run: npm audit fix || true
+
 
     - name: Install Cypress and reporters
       run: |
@@ -37,8 +40,7 @@ jobs:
         $(npm bin)/cypress verify
         mkdir -p public/videos
 
-    - name: Attempt to fix vulnerabilities (optional)
-      run: npm audit fix || true
+    
 
     - name: Set var 
       run: |
