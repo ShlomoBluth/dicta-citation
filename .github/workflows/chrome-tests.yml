@@ -16,7 +16,7 @@ jobs:
     
 
     container: 
-      image: cypress/browsers:node14.18.1-chrome89-ff86
+      image: cypress/browsers:node16.5.0-chrome91-ff89
       options: --user 1001
 
     steps:
