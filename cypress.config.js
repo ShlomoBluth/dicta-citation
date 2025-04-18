@@ -2,6 +2,7 @@ const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
   video: true,
+  videoUploadOnPasses: false,
   defaultCommandTimeout: 30000,
   pageLoadTimeout: 120000,
   reporter: 'cypress-multi-reporters',
