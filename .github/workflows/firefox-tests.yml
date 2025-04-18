@@ -32,13 +32,29 @@ jobs:
 
     - name: Install Cypress and reporters
       run: |
+        echo "Installing Cypress and reporters..."
         npm install --save-dev cypress
         npm install cypress-multi-reporters --save-dev
         npm install mochawesome --save-dev
-        $(npm bin)/cypress cache path
-        $(npm bin)/cypress cache list
-        $(npm bin)/cypress verify
+
+        echo "npm bin:"
+        npm bin
+
+        echo "Cypress binary path:"
+        CYP_BIN="$(npm bin)/cypress"
+        echo "$CYP_BIN"
+
+        if [ -x "$CYP_BIN" ]; then
+          $CYP_BIN cache path
+          $CYP_BIN cache list
+          $CYP_BIN verify
+        else
+          echo "❌ Cypress binary not found or not executable: $CYP_BIN"
+          exit 1
+        fi
+
         mkdir -p public/videos
+
 
     
 
