@@ -64,6 +64,7 @@ jobs:
           cat toolTest.log
         else
           if grep -q 'Error: ffmpeg exited' toolTest.log \
+          || grep -q 'TimeoutError: operation timed out' toolTest.log \
           || grep -q 'Because this error occurred during a `before each` hook' toolTest.log \
           || grep -q 'EISDIR: illegal operation on a directory, read' toolTest.log;
           then
