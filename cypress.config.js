@@ -1,7 +1,7 @@
 const { defineConfig } = require('cypress')
 
 module.exports = defineConfig({
-  video: true,
+  video: process.env.CI !== 'true',
   videoUploadOnPasses: false,
   defaultCommandTimeout: 30000,
   pageLoadTimeout: 120000,
