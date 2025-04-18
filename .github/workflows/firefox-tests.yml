@@ -78,15 +78,8 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        mkdir -p public/videos
-        shopt -s nullglob
-        files=(cypress/videos/*)
-        if [ ${#files[@]} -gt 0 ]; then
-          cp "${files[@]}" public/videos
-        else
-          echo "No video files found — skipping copy"
-        fi
-      if: ${{ always() && (env.TOOL_TESTS == 'true') }}
+        cp cypress/videos/* public/videos || echo "No videos to copy
+      if: ${{ always() && (env.TOOL_TESTS == 'true')}}
 
     - name: Run firefox requests tests
       run: |
@@ -112,15 +105,8 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        mkdir -p public/videos
-        shopt -s nullglob
-        files=(cypress/videos/*)
-        if [ ${#files[@]} -gt 0 ]; then
-          cp "${files[@]}" public/videos
-        else
-          echo "No video files found — skipping copy"
-        fi
-      if: ${{ always() && (env.TOOL_TESTS == 'true') }}
+        cp cypress/videos/* public/videos || echo "No videos to copy
+      if: ${{ always() && (env.TOOL_TESTS == 'true')}}
 
 
     - name: Merge test results into one
