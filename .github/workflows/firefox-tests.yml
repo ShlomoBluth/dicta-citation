@@ -78,8 +78,15 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        cp cypress/videos/* public/videos
-      if: ${{ always() && (env.TOOL_TESTS == 'true')}}
+        mkdir -p public/videos
+        shopt -s nullglob
+        files=(cypress/videos/*)
+        if [ ${#files[@]} -gt 0 ]; then
+          cp "${files[@]}" public/videos
+        else
+          echo "No video files found — skipping copy"
+        fi
+      if: ${{ always() && (env.TOOL_TESTS == 'true') }}
 
     - name: Run firefox requests tests
       run: |
@@ -105,8 +112,16 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        cp cypress/videos/* public/videos
-      if: ${{ always() && (env.REQUESTS_TESTS == 'true') }}
+        mkdir -p public/videos
+        shopt -s nullglob
+        files=(cypress/videos/*)
+        if [ ${#files[@]} -gt 0 ]; then
+          cp "${files[@]}" public/videos
+        else
+          echo "No video files found — skipping copy"
+        fi
+      if: ${{ always() && (env.TOOL_TESTS == 'true') }}
+
 
     - name: Merge test results into one
       run: npx mochawesome-merge cypress/results/json/*.json > index.json
