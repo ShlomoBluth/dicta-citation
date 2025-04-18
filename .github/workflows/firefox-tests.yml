@@ -56,6 +56,7 @@ jobs:
     
     - name: Run firefox tool tests
       run: |
+        export CI=true
         touch toolTest.log
         toolTestsCommand='npx cypress run --browser firefox --spec ./cypress/e2e/toolTests.js \
         --config trashAssetsBeforeRuns=false'
@@ -82,6 +83,7 @@ jobs:
 
     - name: Run firefox requests tests
       run: |
+        export CI=true
         touch requestsTest.log
         requestsTestsCommand='npx cypress run --browser firefox --spec ./cypress/e2e/requestsTests.js \
         --config trashAssetsBeforeRuns=false'
