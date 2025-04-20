@@ -78,7 +78,6 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        mkdir -p public/videos
         cp -r cypress/videos/. public/videos 2>/dev/null || echo "No videos to copy"
       if: ${{ always() && (env.TOOL_TESTS == 'true')}}
 
@@ -106,7 +105,6 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        mkdir -p public/videos
         cp -r cypress/videos/. public/videos 2>/dev/null || echo "No videos to copy"
       if: ${{ always() && (env.TOOL_TESTS == 'true')}}
 
