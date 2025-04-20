@@ -26,7 +26,7 @@ urls.forEach((urlValue,urlKey)=>{
             it('citation run in hebrew mode',()=>{
                 cy.setLanguageMode({language:'Hebrew'})
                 cy.intercept('**/api/markpsukim**').as('req')
-                cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
+                cy.findCitation('דגכעיחלךף גכעיח קראטון גכעיחל בהנמצ')
                 cy.wait('@req',{timeout:120000})
                 cy.resultsTests(' משֶׁה קִבֵּל תּוֹרָה מִסִּינַי וּמְסָרָהּ לִיהוֹשֻׁעַ וִיהוֹשֻׁעַ לִזְקֵנִים וּזְקֵנִים')
             })
