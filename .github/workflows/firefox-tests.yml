@@ -11,8 +11,7 @@ jobs:
   cypress-e2e:
     name: Run on firefox
     runs-on: ubuntu-latest
-    container: 
-      image: cypress-14.3.1-node-22.14.0-chrome-135.0.7049.95-1-ff-137.0.2-edge-135.0.3179.85-1
+    
     
 
     steps:
