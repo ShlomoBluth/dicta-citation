@@ -18,8 +18,9 @@ jobs:
     
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v3
       with: 
+        node-version: '18'
         submodules: true
         options: --user 1001
 
