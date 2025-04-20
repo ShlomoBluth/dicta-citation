@@ -67,7 +67,8 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        cp cypress/videos/* public/videos
+        mkdir -p public/videos
+        cp -r cypress/videos/. public/videos 2>/dev/null || echo "No videos to copy"
       if: ${{ always() && (env.TOOL_TESTS == 'true')}}
 
     - name: Run edge requests tests
@@ -93,7 +94,8 @@ jobs:
 
     - name: Copy test execution videos 
       run: |
-        cp cypress/videos/* public/videos
+        mkdir -p public/videos
+        cp -r cypress/videos/. public/videos 2>/dev/null || echo "No videos to copy"
       if: ${{ always() && (env.REQUESTS_TESTS == 'true') }}
 
     - name: Merge test results into one
