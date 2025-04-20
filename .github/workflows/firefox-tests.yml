@@ -12,7 +12,7 @@ jobs:
     name: Run on firefox
     runs-on: ubuntu-latest
     container: 
-      image: ghcr.io/your-username/cypress-with-ffmpeg:latest
+      image: cypress/included:13.6.6
     env:
       MOZ_HEADLESS: 1
       XVFB_RUN_ARGS: "--auto-servernum --server-args='-screen 0 1280x720x24'"
@@ -22,8 +22,11 @@ jobs:
       with: 
         submodules: true
 
-    - name: Install ffmpeg for video recording
-      run: apt-get update && apt-get install -y ffmpeg
+    - name: Remove broken Google Chrome repo and install ffmpeg
+      run: |
+        rm -f /etc/apt/sources.list.d/google-chrome.list || true
+        apt-get update
+        apt-get install -y ffmpeg
 
 
     # - name: Set up Node.js
