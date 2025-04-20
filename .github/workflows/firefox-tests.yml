@@ -14,11 +14,17 @@ jobs:
     container: 
       image: cypress/included:13.6.6
       options: --user 1001
+    env:
+      MOZ_HEADLESS: 1
+      XVFB_RUN_ARGS: "--auto-servernum --server-args='-screen 0 1280x720x24'"
 
     steps:
     - uses: actions/checkout@v4
       with: 
         submodules: true
+
+    - name: Install ffmpeg for video recording
+      run: apt-get update && apt-get install -y ffmpeg
 
 
     # - name: Set up Node.js
@@ -28,6 +34,7 @@ jobs:
 
     - name: Attempt to fix vulnerabilities (optional)
       run: npm audit fix || true
+
 
 
     - name: Install Cypress and reporters
