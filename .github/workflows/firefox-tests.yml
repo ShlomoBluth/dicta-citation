@@ -12,21 +12,16 @@ jobs:
     name: Run on firefox
     runs-on: ubuntu-latest
     container: 
-      image: cypress/included:13.6.6
-    env:
-      MOZ_HEADLESS: 1
-      XVFB_RUN_ARGS: "--auto-servernum --server-args='-screen 0 1280x720x24'"
+      image: cypress-14.3.1-node-22.14.0-chrome-135.0.7049.95-1-ff-137.0.2-edge-135.0.3179.85-1
+    
 
     steps:
     - uses: actions/checkout@v4
       with: 
         submodules: true
+        options: --user 1001
 
-    - name: Remove broken Google Chrome repo and install ffmpeg
-      run: |
-        rm -f /etc/apt/sources.list.d/google-chrome.list || true
-        apt-get update
-        apt-get install -y ffmpeg
+    
 
 
     # - name: Set up Node.js
