@@ -12,7 +12,7 @@ jobs:
     name: Run on firefox
     runs-on: ubuntu-latest
     container: 
-      image: cypress/included:13.6.6
+      image: ghcr.io/your-username/cypress-with-ffmpeg:latest
     env:
       MOZ_HEADLESS: 1
       XVFB_RUN_ARGS: "--auto-servernum --server-args='-screen 0 1280x720x24'"
