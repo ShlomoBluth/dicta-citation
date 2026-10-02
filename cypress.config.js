@@ -11,14 +11,12 @@ module.exports = defineConfig({
   env: {
     DEV_URL: 'https://citation-dev--gracious-gates-eda4d9.netlify.app/',
     LIVE_URL: 'https://citation.dicta.org.il/',
-    TOOL_TESTS: true,
-    REQUESTS_TESTS: true,
-    RECORD_KEY: '03d210d2-c435-46eb-952f-4e6e24286dc0',
   },
   e2e: {
     // We've imported your old cypress plugins here.
     // You may want to clean this up later by importing these.
     setupNodeEvents(on, config) {
+      require('./dicta-shared/videoCleanup')(on)
       return require('./cypress/plugins/index.js')(on, config)
     },
     baseUrl: 'https://citation-dev--gracious-gates-eda4d9.netlify.app/',

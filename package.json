@@ -1,9 +1,20 @@
 {
   "devDependencies": {
-    "cypress": "^12.5.0",
+    "cypress": "^15.21.1",
     "cypress-multi-reporters": "^1.5.0",
     "mocha": "^8.3.2",
     "mochawesome": "^6.2.2",
     "mochawesome-merge": "^4.2.0"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "test:tool": "cypress run --spec cypress/e2e/toolTests.js",
+    "test:requests": "cypress run --spec cypress/e2e/requestsTests.js",
+    "test:dev-requests": "cypress run --spec cypress/e2e/DevelopmentVersionRequestsTests.js",
+    "open": "cypress open",
+    "report": "mochawesome-merge \"cypress/results/json/*.json\" > index.json && marge index.json --reportDir public"
+  },
+  "engines": {
+    "node": "^20.1.0 || ^22.0.0 || >=24.0.0"
   }
 }
