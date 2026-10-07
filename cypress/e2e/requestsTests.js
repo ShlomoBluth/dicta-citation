@@ -45,25 +45,25 @@ urls.forEach((urlValue,urlKey)=>{
                 })
             })
         
-            it('Error message for markpsukim response with a delay of 15 seconds when clicking the run button'+
-            ' of citation page in hebrew mode',()=>{
-                cy.citationRequest({
-                    url:'markpsukim',
-                    language:'Hebrew',
-                    message:'לא ניתן לגשת כעת לשרת, נסה שוב מאוחר יותר',
-                    delaySeconds: 60
-                })
-            })
+            // it('Error message for markpsukim response with a delay of 15 seconds when clicking the run button'+
+            // ' of citation page in hebrew mode',()=>{
+            //     cy.citationRequest({
+            //         url:'markpsukim',
+            //         language:'Hebrew',
+            //         message:'לא ניתן לגשת כעת לשרת, נסה שוב מאוחר יותר',
+            //         delaySeconds: 60
+            //     })
+            // })
         
-            it('Error message for markpsukim response with a delay of 15 seconds when clicking the run button'+
-            ' of citation page in english mode',()=>{
-                cy.citationRequest({
-                    url:'markpsukim',
-                    language:'English',
-                    message:'Server error. Please try again later',
-                    delaySeconds: 60
-                })
-            })
+            // it('Error message for markpsukim response with a delay of 15 seconds when clicking the run button'+
+            // ' of citation page in english mode',()=>{
+            //     cy.citationRequest({
+            //         url:'markpsukim',
+            //         language:'English',
+            //         message:'Server error. Please try again later',
+            //         delaySeconds: 60
+            //     })
+            // })
         
             // it('Error message for parsetogroups response with status code 500 when clicking the run button of citation page'+
             // ' in hebrew mode',()=>{

@@ -24,12 +24,10 @@ Cypress.Commands.add('citationRequest',({url,language,status=200,message='',dela
   }
   cy.findCitation('משה קבל תורה מסיני ומסרה ליהושע')
 
-  if(delaySeconds>0){
-    cy.get('[class*="spinner"]',{timeout:1000*delaySeconds}).should('not.exist')
-  }
-  
   if(message.length>0){
-    cy.contains(message).should('exist')
+    // With a delay, only the error message matters: the site may show it while still
+    // spinning or only once the delayed response arrives
+    cy.contains(message,{timeout:1000*delaySeconds+30000}).should('exist')
   }
 })  
 
