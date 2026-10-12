@@ -16,7 +16,7 @@ Cypress.Commands.add('resultsTests',(text)=>{
 Cypress.Commands.add('citationRequest',({url,language,status=200,message='',delaySeconds=0})=>{
   cy.setLanguageMode({language:language})
   cy.intercept('POST', '**/api/'+url+'**', {
-    delayMs:1000*delaySeconds,
+    delay:1000*delaySeconds,
     statusCode: status
   },)
   if(message.length>0){
